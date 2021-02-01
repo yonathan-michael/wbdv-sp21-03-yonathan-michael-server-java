@@ -10,19 +10,29 @@
 <body>
 <div class="container">
 
-    <div class="row justify-content-between bg-primary border-bottom border-dark">
-        <div class="col-auto text-white">
-            <i class="fa fa-bars text-white pl-0 pt-2 pr-1"> </i>
-            Course Name
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Course Name</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <i class="fa fa-bars text-black pl-0 pt-2 pr-3"> <span class="sr-only">(current)</span> </i>
+                </li>
+            </ul>
+
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Add Module" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">+</button>
+                <a href="../index.html" class="text-dark pl-5 pr-1">
+                    <b>Home</b>
+                </a>
+            </form>
+
         </div>
-        <div class="text-white col-auto">
-            Add Module
-            <i class="fa fa-plus text-white pt-2 pl-1"></i>
-            <a href="../index.html" class=" text-white pl-5 pr-1">
-                <b>Home</b>
-            </a>
-        </div>
-    </div>
+    </nav>
 
     <div class="row">
 
