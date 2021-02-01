@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+
+<div class="container-sm p-5">
+
+    <div>
+        <div class="row justify-content-between">
+            <div class="col-3">
+                <div>
+                    <h3>
+                        Profile
+                    </h3>
+                </div>
+            </div>
+            <div class="col-3">
+                <div>
+                    <h3>
+                        <a href="../index.html">
+                            <p class="text-right">Home</p>
+                        </a>
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="alert alert-danger" role="alert">
+        Invalid
+    </div>
+
+    <div class="alert alert-success" role="alert">
+        Profile Updated
+    </div>
+
+    <div class="p-1">
+        <label for="UsernameInput">Username</label>
+        <input class="form-control" id="UsernameInput"
+               placeholder="Username"/>
+    </div>
+
+    <div class="p-1">
+        <label for="PhoneInput">Phone</label>
+        <input class="form-control" id="PhoneInput"
+               placeholder="(555)-123-4567"/>
+    </div>
+
+    <div class="p-1">
+        <label for="EmailFormControl">Email</label>
+        <input class="form-control" id="EmailFormControl"
+               placeholder="john.doe@gmail.com"/>
+    </div>
+
+    <div class="form-group p-1">
+        <label for="exampleFormControlSelect1">Role</label>
+        <select class="form-control" id="exampleFormControlSelect1">
+            <option>Faculty</option>
+            <option>Student</option>
+            <option>Admin</option>
+        </select>
+    </div>
+
+    <div class="form-group p-1">
+        <label for="example-date-input">Date of Birth</label>
+        <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+    </div>
+
+    <div class="pt-3">
+        <button class="btn btn-success btn-block border-dark">Update</button>
+    </div>
+
+    <div class="pt-3">
+        <a href="../index.html" class="btn btn-danger btn-block border-dark">Log Out</a>
+    </div>
+
+</div>
+
+</body>
+</html>
