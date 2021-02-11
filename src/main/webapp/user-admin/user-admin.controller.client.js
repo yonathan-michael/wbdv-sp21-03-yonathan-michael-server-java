@@ -7,6 +7,9 @@
     var userService = new AdminUserServiceClient();
     $(main);
 
+    var users = [];
+
+
     function main() {
       $usernameFld = $(".wbdv-username-fld")
       $passwordFld = $(".wbdv-password-fld")
@@ -19,8 +22,6 @@
       $userForm = $("wbdv-form")
 
       $updateBtn.click(updateUser)
-//      user = {username: 'JD', password: 'xxxx', firstName: 'John', lastName: 'Doe', role: 'Student'}
-//      createUser(user)
 
       $createBtn.click(() => {
       user = {username: $usernameFld.val(),
@@ -36,16 +37,20 @@
         $lastNameFld.val("")
         $roleFld.val("")
       });
+
+      userService.findAllUsers()
+        .then(function (actualUsersFromServer) {
+            users = actualUsersFromServer
+            renderUsers(users)
+      })
     }
 
-    var users = [];
-
     function createUser(user) {
-//      userService.createUser(user).then(function (actualUser){
-        users.push(user)
-        console.log(users)
-        renderUsers(users)
-//        })
+        userService.createUser(user)
+         .then(function (actualUser) {
+          users.push(user)
+          renderUsers(users)
+          })
       }
 
 
@@ -53,25 +58,27 @@
         console.log(event.target)
         var deleteBtn = jQuery(event.target)
         var theIndex = deleteBtn.attr("id")
-////        var theId = users[theIndex]._id
-////        userService.deleteUser(theId).then(function (status) {
-        users.splice(theIndex, 1)
-        renderUsers(users)
-////        })
+        var theId = users[theIndex]._id
+        userService.deleteUser(theId)
+            .then(function (status) {
+                users.splice(theIndex, 1)
+                renderUsers(users)
+            })
     }
 
-    function updateUser(event) {
-        console.log(event.target)
+    function updateUser() {
         var updateBtn = jQuery(event.target)
         userToEdit.username = $usernameFld.val()
         userToEdit.password = $passwordFld.val()
         userToEdit.firstName = $firstNameFld.val()
         userToEdit.lastName = $lastNameFld.val()
         userToEdit.role = $roleFld.val()
-        var i = (user) => user.username == userToEdit.username
-        var index = users.findIndex(i)
-        users[index] = userToEdit
-        renderUsers(users)
+        userService.updateUser(userToEdit._id, userToEdit)
+            .then(function (status){
+                var index = users.findIndex(user => user._id === userToEdit.id )
+                users[index] = userToEdit
+                renderUsers(users)
+            })
       }
 
     var userToEdit = null
@@ -79,13 +86,7 @@
         console.log(event.target)
         var editBtn = jQuery(event.target)
         var theId = editBtn.attr("id")
-        for (var i = 0; i < users.length; i++) {
-            var user = users[i]
-            if (i == theId ) {
-                userToEdit = user
-                break;
-            }
-        }
+        userToEdit = users.find(user => user._id === theId )
         $usernameFld.val(userToEdit.username)
         $passwordFld.val(userToEdit.password)
         $firstNameFld.val(userToEdit.firstName)
@@ -106,7 +107,7 @@
             <td>${user.role}</td>
             <td>
                 <i class="fa-2x fa fa-times wbdv-delete-btn" id="${i}"></i>
-                <i class="fa-2x fa fa-pencil wbdv-edit-btn" id="${i}"></i>
+                <i class="fa-2x fa fa-pencil wbdv-edit-btn" id="${user._id}"></i>
             </td>
         </tr>
     `)
