@@ -34,7 +34,7 @@ public class WidgetController {
     @PutMapping("/api/widgets/{wid}")
     public Integer updateWidget(@PathVariable("wid") String wid,
                                 @RequestBody Widget widget) {
-        return service.deleteWidget(wid);
+        return service.updateWidget(wid, widget );
     }
 
     @DeleteMapping("/api/widgets/{wid}")

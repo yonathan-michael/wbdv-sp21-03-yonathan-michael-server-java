@@ -10,17 +10,17 @@ import java.util.Random;
 
 @Service
 public class WidgetService {
-    private List<Widget> widgets = new ArrayList<Widget>();
-//    {
-//        Widget w1 = new Widget();
-//        Widget w2 = new Widget();
-//        w1.setId(1);
-//        w2.setId(2);
-//        w1.setType("HEADING");
-//        w2.setType("PARAGRAPH");
-//        widgets.add(w1);
-//        widgets.add(w2);
-//    }
+    private List<Widget> widgets = new ArrayList<>();
+    {
+        Widget w1 = new Widget();
+        Widget w2 = new Widget();
+        w1.setId(1L);
+        w2.setId(2L);
+        w1.setType("HEADING");
+        w2.setType("PARAGRAPH");
+        widgets.add(w1);
+        widgets.add(w2);
+    }
 
     // implement crud operations
     public Widget createWidget(String tid, Widget widget){
@@ -32,11 +32,11 @@ public class WidgetService {
     }
 
     public List<Widget> findWidgetsForTopic(String tid) {
-        List<Widget> ws = new ArrayList<Widget>();
+        List<Widget> ws = new ArrayList<>();
         for(Widget w: widgets) {
-            if(w.getTopicId().equals(tid)) {
-                ws.add(w);
-            }
+                if (w.getTopicId().equals(tid)) {
+                    System.out.println(w.getTopicId());
+                }
         }
         return ws;
     }
