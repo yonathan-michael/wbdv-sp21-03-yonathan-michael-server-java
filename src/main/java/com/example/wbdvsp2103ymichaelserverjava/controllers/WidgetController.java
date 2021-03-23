@@ -9,7 +9,7 @@ import java.util.List;
 
 // make data available to the rest of the world
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "https://web-dev-yonathan-michael-react.herokuapp.com/")
 public class WidgetController {
 
     @Autowired
