@@ -9,7 +9,7 @@ import java.util.List;
 
 // make data available to the rest of the world
 @RestController
-@CrossOrigin(origins = "https://web-dev-yonathan-michael-react.herokuapp.com/")
+@CrossOrigin(origins = "*")
 public class WidgetController {
 
     @Autowired
@@ -28,17 +28,17 @@ public class WidgetController {
 
     @GetMapping("/api/all/widgets")
     public List<Widget> findWidgets() {
-        return service.findWidgets();
+        return service.findAllWidgets();
     }
 
     @PutMapping("/api/widgets/{wid}")
-    public Integer updateWidget(@PathVariable("wid") String wid,
+    public Integer updateWidget(@PathVariable("wid") Integer wid,
                                 @RequestBody Widget widget) {
         return service.updateWidget(wid, widget );
     }
 
     @DeleteMapping("/api/widgets/{wid}")
-    public Integer deleteWidget(@PathVariable("wid") String wid) {
+    public Integer deleteWidget(@PathVariable("wid") Integer wid) {
         return service.deleteWidget(wid);
     }
 }
